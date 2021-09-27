@@ -4,6 +4,7 @@ on:
     types: [created]
 jobs:
   full_test:
+    runs-on: ubuntu-latest
     name: Full Build & Test
     if: ${{ github.event.issue.pull_request && contains(github.event.comment.body, 'FullTest!') }}
     steps:
