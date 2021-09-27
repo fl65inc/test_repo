@@ -1,0 +1,12 @@
+name: Full Build & Test
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  full_test:
+    name: Full Build & Test
+    if: ${{ github.event.issue.pull_request && contains(github.event.comment.body, 'FullTest!') }}
+    steps:
+      - run: echo ${{ github.event.issue.pull_request.base.sha }}
+      # Comment about ${{ github.event.pull_request.base.sha }}:
+      # This will test all commits since the base commit. This is a prerequisite for merging.
